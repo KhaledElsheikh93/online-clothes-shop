@@ -1,4 +1,4 @@
-<form method="post" action="fun/insert_cat.php" enctype="multipart/form-data">
+<form method="post" action="Fun/insert_cat.php" enctype="multipart/form-data">
   <br>
   <div class="form-group">
     <label>Cat Name</label>

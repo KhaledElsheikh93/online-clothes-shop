@@ -16,8 +16,19 @@
 	</div><br>
 	<div class="form-group">
 		<label>Category</label>
-		<input type="text" name="cat_id" class="form-control" value="<?php echo $row_product['cat_id'] ?>">
-	</div><br>
+		<select class="form-control" name = "cat">
+			<option selected=""></option>
+			<?php 
+			include "Fun/connection.php"; 
+			$sel = "SELECT * FROM category";
+			$result = $conn->query($sel);
+			foreach ($result as $key) {
+				?>
+				<option value="<?php echo $key['id'] ?>" ><?php echo $key['cat_name']; ?></option>
+				<?php 
+		 	} 
+		 	?>
+		 </select>
 	<div class="form-group">
 		<label>Old Price</label>
 		<input type="text" name="old_price" class="form-control" value="<?php echo $row_product['old_price'] ?>">

@@ -193,6 +193,7 @@ iframe {
 /*[ LOADDING ]
 ///////////////////////////////////////////////////////////
 */
+
 .animsition-loading-1 {
   position: absolute;
   top: 50%;
@@ -2345,5 +2346,6 @@ input.num-product::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; 
 }
+
 
 

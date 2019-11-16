@@ -8,8 +8,9 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $message = $row['message'];
 $name = $row['name'];
+$count=$row['count_message']+1;
 
-$update = "UPDATE message SET seen = '1' ,count = count+1 WHERE id = $id";
+$update = "UPDATE messages SET read_message = '1' ,count_message=$count WHERE id = $id";
 $conn->query($update);
 
 ?>
@@ -19,6 +20,6 @@ $conn->query($update);
 	<?php echo $name; ?>
 </h3>
 <p><?php echo $message;?></p>
-<a href="message.php" class="btn btn-info">Back</a>
+<a href="messages.php" class="btn btn-info">Back</a>
 </center>
 <?php }?>

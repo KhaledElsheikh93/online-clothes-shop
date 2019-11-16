@@ -2,7 +2,7 @@
    if (isset($_POST['submit'])) {
    	 include "connection.php";
 
-   	 $cat   =$_POST['cat_name'];
+   	 $cat        =$_POST['cat_name'];
    	 $img        =$_FILES['image']['name'];
    	 $img_tmp    =$_FILES['image']['tmp_name'];
    	 move_uploaded_file($img_tmp,"uploads/image");

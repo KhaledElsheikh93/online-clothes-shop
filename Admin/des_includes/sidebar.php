@@ -16,18 +16,15 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="admin_view.php"><a href="index.php"><em class="fa fa-dashboard">&nbsp;</em> Admins</a></li>
+			<li><a href="index.php"><em class="fa fa-dashboard">&nbsp;</em> Admins</a></li>
 			<li><a href="users.php"><em class="fa fa-dashboard">&nbsp;</em> Users</a></li>
-			<li><a href="blogs.php"><em class="fa fa-dashboard">&nbsp;</em> Blogs</a></li>
-			<li><a href="products.php"><em class="fa fa-dashboard">&nbsp;</em> Products</a></li>
 			<li><a href="Category.php"><em class="fa fa-dashboard">&nbsp;</em> Categories</a></li>
+			<li><a href="products.php"><em class="fa fa-dashboard">&nbsp;</em> Products</a></li>
+			<li><a href="new_arrivals.php"><em class="fa fa-dashboard">&nbsp;</em> New Arrivals</a></li>
+			<li><a href="blogs.php"><em class="fa fa-dashboard">&nbsp;</em> Blogs</a></li>			
 			<li><a href="comments.php"><em class="fa fa-dashboard">&nbsp;</em> Comments</a></li>
 			<li><a href="messages.php"><em class="fa fa-dashboard">&nbsp;</em> Messages</a></li>
-
-
-
-			
-			
+			<li><a href="media.php"><em class="fa fa-dashboard">&nbsp;</em>  Social Media</a></li>			
 			<li><a href="login.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->

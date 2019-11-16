@@ -1,5 +1,5 @@
 
-<form method="post" action="fun/insert_blog.php"  enctype="multipart/form-data">
+<form method="post" action="Fun/insert_blog.php"  enctype="multipart/form-data">
 	<br>
 	<div class="form-group">
 		<label>Title</label>
@@ -17,10 +17,6 @@
 		<label>Images</label>
 		<input type="file" name="images" class="form-control">
 	</div><br>
-	<div class="form-group">
-		<label>Comments</label>
-		<input type="text" name="comment" class="form-control">
-	</div>
 
 	<input type="submit" name="submit" value="Add" class="btn btn-info">
 </form>

@@ -1,4 +1,4 @@
-<form method="post" action="fun/insert_product.php"  enctype="multipart/form-data">
+<form method="post" action="Fun/insert_product.php"  enctype="multipart/form-data">
 	<div class="form-group">
 		<label>Product</label>
 		<input type="text" name="product_name" class="form-control">

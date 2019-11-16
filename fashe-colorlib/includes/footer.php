@@ -177,10 +177,7 @@
 
 	<!-- Container Selection1 -->
 	<div id="dropDownSelect1"></div>
-
-
-
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
@@ -218,14 +215,11 @@
 					swal(nameProduct, "is added to cart !", "success");
 				}
 			})
-
 			$.post("fun/cartdiv.php", {id:id}, function(data){
 				$(".header-cart-wrapitem").append(data);
 			})
 			
 		});
-
-
 		
 		$('.block2-btn-addwishlist').each(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
@@ -233,19 +227,16 @@
 				swal(nameProduct, "is added to wishlist !", "success");
 			});
 		});
-
 		
-
 		
 	</script>
 	<script src="js/main.js"></script>
 	<script>
-		$('message').click(function(){
+		$('.message').click(function(){
 			var name   = $("#name").val();
 			var phone  = $("#phone").val();
 			var email  = $("#email").val();
 			var message= $("#message").val();
-
 			if (!name) {
 				$("#name").attr("placeholder","Please enter your name");
 			}
@@ -265,7 +256,7 @@
 					data :{
 						'name'  : name,
 						'phone' : phone,
-						'email' : eamil,
+						'email' : email,
 						'message':message,
 					},
 					success:function(data){
@@ -273,18 +264,51 @@
 						$("#phone").val('');
 						$("#email").val('');
 						$("#message").val('');
-
-						$(".data-form").html('<span styly="color : red;">Your message has sent successfully</span>')
+						$(".data-form").html('<span styly="color : red;">Your message has sent successfully</span>' + data)
 					}
-
 				})
 			}
-
 		})
 	</script>
+	<script type="text/javascript">
+		$('.inp').keyup(function(){
+			var sea = $(this).val();
+			$.post('fun/search.php',{sea:sea},function(data){
+				$('#ul').html(data)
+				$('#se').show()
+			})
+		})
+	</script>
+	<script type="text/javascript">
+		$('.put').keyup(function(){
+			var rg =$(this).val();
+			$.post('fun/blog_search.php',{rg:rg},function(data){
+				$('#list').html(data)
+				$('#show').show()
+			})
+		})
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
 
+			$(document).on("click", ".rate", function(){
+			var star = $(this).attr('id');
+            var user_id = $(this).parent().data('user');
+            var product_id=$(this).parent().data('product'); 
+            $.post('fun/rate.php',{star:star,user_id:user_id,product_id:product_id},function(data){
+   				$("#rate_div").load(location.href + ' #rate_div')
+   				alert(data)
+            })
+            
+            		   
+		})
+	})
+	</script>
 <!--===============================================================================================-->
 	
-
 </body>
 </html>
+
+	
+
+

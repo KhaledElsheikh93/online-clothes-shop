@@ -1,5 +1,6 @@
 <?php 
   include "includes/header.php";
+  
 ?>
 
 	<!-- Title Page -->
@@ -28,11 +29,9 @@
                           $result_cart=$conn->query($select_cart);
 
                           foreach ($result_cart as $row) {
-                          	$user_name=$row['product_id'];
+                          	$pro_id=$row['product_id'];                          
 
-                          
-
-                          $cat="SELECT * FROM products wHERE id = $user_name";
+                          $cat="SELECT * FROM products WHERE id = $pro_id";
                           $result_cat=$conn->query($cat);
                           foreach ($result_cat as $row_cat) {
                           	
@@ -55,14 +54,15 @@
 										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
 									</button>
 
-									<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="1">
+									<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="<?php echo $row['quantity']; ?>">
 
 									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
 									</button>
 								</div>
 							</td>
-							<td class="column-5">$36.00</td>
+							<td class="column-5">$<?php echo $row['total_price']?></td>
+							<td class="column-6"> <button data-id = "<?php echo $row['product_id']?>" value="<?php echo $row['quantity']?>" class="btn btn-info updateee">Update</button> </td>
 						
 						</tr>
 						<?php } } ?>
@@ -92,7 +92,7 @@
 
 				<div class="size10 trans-0-4 m-t-10 m-b-10">
 					<!-- Button -->
-					<button dataa = "<?php echo $row['product_id'];?>" value="<?php echo $row['quantity']?>" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 updatee">
+					<button name="upp" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 updatee">
 						Update Cart
 					</button>
 					</a>
@@ -113,7 +113,39 @@
 					</span>
 
 					<span class="m-text21 w-size20 w-full-sm">
-						$39.00
+			  <?php
+					function total_price(){
+						 include "connection.php";
+						  $quantity=$_POST['quantity'];
+						  $id=$_POST['id'];
+					 	
+
+					 	$total=0;
+
+					 	
+
+					     // From cart table
+					 	$select_price="SELECT * FROM cart WHERE user_id='$id'";
+					 	$result_price=mysqli_query($conn, $select_price);
+					 	while ($row_price=mysqli_fetch_array($result_price)) {
+
+					 	$product_id=$row_price['product_id'];
+
+					 	// Using (product_id) to made relation between cart table and product table
+					 	$select_product_price="SELECT * FROM products WHERE id='$product_id'";
+					 	$result_product_price=mysqli_query($conn ,$select_product_price);
+					 	while ($row_product_price=mysqli_fetch_array($result_product_price)){
+
+					 		$product_price=array($row_product_price['product_price']);
+
+					 		$values=array_sum($product_price);
+
+					 		$total +=$values;
+					 		}
+					 	}
+					 	echo $total. "$";
+					 }
+		    ?>
 					</span>
 				</div>
 

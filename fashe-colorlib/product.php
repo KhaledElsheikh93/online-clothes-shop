@@ -4,12 +4,12 @@
  ?>
 
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(images/heading-pages-02.jpg);">
+	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(images/heading-pages-05.jpg);">
 		<h2 class="l-text2 t-center">
-			Women
+			New Collections
 		</h2>
 		<p class="m-text13 t-center">
-			New Arrivals Women Collection 2018
+			New Arrivals Collection 2019
 		</p>
 	</section>
 
@@ -38,36 +38,24 @@
 
 						<ul class="p-b-54">
 							<li class="p-t-4">
-								<a href="#" class="s-text13 active1">
+								<a href="?" class="s-text13 active1">
 									All
 								</a>
 							</li>
+							<?php
+							
+                              $select_cat="SELECT * FROM category limit 5 OFFSET 5";
+                              $result_cat=$conn->query($select_cat);
+                              foreach ($result_cat as $key) {
+							   ?>
 
 							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Women
+								<a href="?id=<?php echo $key['id'] ?>" class="s-text13">
+									<?php echo $key['cat_name'] ?>
 								</a>
 							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Men
-								</a>
-							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Kids
-								</a>
-							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Accesories
-								</a>
-							</li>
-						</ul>
-
+                         <?php } ?>
+							
 						<!--  -->
 						<h4 class="m-text14 p-b-32">
 							Filters
@@ -140,7 +128,10 @@
 						</div>
 
 						<div class="search-product pos-relative bo4 of-hidden">
-							<input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
+							<input class="inp s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
+							<div id="se" style="display: none;"><ul id="ul">
+								
+							</ul></div>
 
 							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
 								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
@@ -183,8 +174,13 @@
 					<!-- Product -->
 					<div class="row">
 						<?php 
-                         include "Admin/Fun/connection.php";
-                         $select_product="SELECT * FROM products";
+                         include "../Admin/Fun/connection.php";
+                         if (isset($_GET['id'])) {
+                         	$id=$_GET['id'];
+                         $select_product="SELECT * FROM products WHERE cat_id = $id";
+                         }else{
+                         	$select_product="SELECT * FROM products";
+                         }
                          $result_product=$conn->query($select_product);
                          foreach ($result_product as $row) {
                           	
@@ -194,7 +190,7 @@
 							<!-- Block2 -->
 							<div class="block2">
 								<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-									<img src="Admin/Fun/uploads/<?php echo $row['images']; ?>" alt="IMG-PRODUCT">
+									<img src="../Admin/Fun/uploads/<?php echo $row['images']; ?>" alt="IMG-PRODUCT">
 
 									<div class="block2-overlay trans-0-4">
 										<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -212,12 +208,12 @@
 								</div>
 
 								<div class="block2-txt p-t-20">
-									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-										Herschel supply co 25l
+									<a href="product-detail.php?id=<?php echo $row['id'] ?>" class="block2-name dis-block s-text3 p-b-5">
+										<?php echo $row['product_name'] ?>
 									</a>
 
 									<span class="block2-price m-text6 p-r-5">
-										$75.00
+										<?php echo $row['price']; ?>
 									</span>
 								</div>
 							</div>

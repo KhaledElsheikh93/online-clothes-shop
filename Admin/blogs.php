@@ -21,7 +21,7 @@
 
 <?php 
 
-   if (!$_GET["do"]) {
+   if (!isset($_GET["do"])) {
     	include "forms_tables/blogs_view.php";
 
     } elseif ($_GET["do"]=="add") {

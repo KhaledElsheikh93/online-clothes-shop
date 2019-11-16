@@ -7,7 +7,8 @@
 			<th>Message</th>
 			<th>Date</th>
 			<th>Read</th>
-                  <th>Count</th>
+      <th>Count</th>
+      <th>Control</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,16 +22,23 @@
             $phone   = $row['phone'];
             $email   = $row['email'];
             $message = $row['message'];
-            $view    = $row['seen'];
-            $count   = $row['count'];
+            $view    = $row['read_message'];
+            $date    =$row['message_date'];
+            $count   = $row['count_message'];
             ?>
        <tr>
        	<td><?php echo $name; ?></td>
        	<td><?php echo $phone; ?></td>
        	<td><?php echo $email; ?></td>
-            <td><?php echo $count; ?></td>
+        <td><?php echo $message ?></td>
+        <td><?php echo $date ?></td>
+
+        
+            
             <td><?php if ($view==0){echo "unread";}else{echo "read";} ?></td>
+            <td><?php echo $count; ?></td>
               <td><a href="?do=view&id=<?php echo $row['id']; ?>"><button class="btn btn-info">View</button></a>
+
       <!-- Button trigger modal -->
 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal<?php echo $row['id']; ?>">
   Delete

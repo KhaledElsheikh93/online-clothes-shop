@@ -32,7 +32,7 @@
                                     <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                 </label>
                             </div>
-                            <input type="submit" name="submit" value="submit" class="btn btn-info">
+                            <input type="submit" name="submit" value="Login" class="btn btn-info">
                         </fieldset>
                     </form>
                 </div>

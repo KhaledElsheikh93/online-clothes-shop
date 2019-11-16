@@ -40,7 +40,7 @@
 
 	<!-- Header -->
 	<header class="header1">
-		<!-- Header desktop -->
+		<!-- Header desktop --> 
 		<div class="container-menu-header">
 			<div class="topbar">
 				<div class="topbar-social">
@@ -57,7 +57,7 @@
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						fashe@example.com
+						<a href="fun/sign-in.php">sign in</a>
 					</span>
 
 					<div class="topbar-language rs1-select2">
@@ -71,7 +71,7 @@
 
 			<div class="wrap_header">
 				<!-- Logo -->
-				<a href="index.html" class="logo">
+				<a href="index.php" class="logo">
 					<img src="images/icons/logo.png" alt="IMG-LOGO">
 				</a>
 
@@ -82,34 +82,30 @@
 							<li>
 								<a href="index.php">Home</a>
 								<ul class="sub_menu">
-									<li><a href="index.html">Homepage V1</a></li>
+									<li><a href="index.php">Homepage V1</a></li>
 									<li><a href="home-02.html">Homepage V2</a></li>
 									<li><a href="home-03.html">Homepage V3</a></li>
 								</ul>
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
-							</li>
-
-							<li class="sale-noti">
-								<a href="product.html">Sale</a>
+								<a href="product.php">Products</a>
 							</li>
 
 							<li>
-								<a href="cart.html">Features</a>
+								<a href="cart.php">Cart</a>
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="blog.php">Blog</a>
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="about.php">About</a>
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
 						</ul>
 					</nav>
@@ -130,7 +126,7 @@
 						<?php
 					   $select_product="SELECT * FROM cart WHERE user_id= 1";
 						   $result_product=$conn->query($select_product);
-						   $rows=$result_product-> num_rows ;
+						   $rows=$result_product-> num_rows() ;
                              if ($rows>0 && $result_product == TRUE) {
                              	echo $rows;
                              }else{
@@ -147,19 +143,18 @@
 		<?php
 	 		$select_product_from_cart="SELECT * FROM cart WHERE user_id = 1";
 	 		$result_product_from_cart=$conn->query($select_product_from_cart);
-	 		$row_of_carts=$result_product_from_cart -> num_rows;
-	 		   if ($row_of_carts>0) {
+	 		$row_carts=$result_product_from_cart -> num_rows();
+	 		   if ($row_carts>0) {
 	 		   	foreach ($result_product_from_cart as $row_cart) {
 	 		   		$id_cart=$row_cart['product_id'];
 	 		   		$select_pro="SELECT * FROM products WHERE id=$id_cart";
 	 		   		$result_pro=$conn->query($select_pro);
 	 		   		$row_product=$result_pro->fetch_assoc();
 	 		   	
-	 		                            
 	    ?>
 								<li class="header-cart-item">
 									<div class="header-cart-item-img">
-										<img src="Admin/Fun/uploads/<?php echo $row_product['images'] ?>" alt="IMG">
+										<img src="../Admin/Fun/uploads/<?php echo $row_product['images'] ?>" alt="IMG">
 									</div>
 
 									<div class="header-cart-item-txt">
@@ -183,13 +178,14 @@
 							</ul>
 
 							<div class="header-cart-total">
-								Total: $75.00
+								
+								<?php include "../includes/upcart.php"; ?>
 							</div>
 
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
@@ -357,29 +353,30 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.html">Shop</a>
+						<a href="product.php">Shop</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.html">Sale</a>
+						<a href="product.php">Sale</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="cart.html">Features</a>
+						<a href="cart.php">Features</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="blog.html">Blog</a>
+						<a href="blog.php">Blog</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="about.html">About</a>
+						<a href="about.php">About</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="contact.html">Contact</a>
+						<a href="contact.php">Contact</a>
 					</li>
 				</ul>
 			</nav>
 		</div>
+	
 	</header>

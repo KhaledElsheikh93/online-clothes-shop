@@ -15,7 +15,7 @@ if (isset($_SESSION['name'])) {
 		</div><!--/.row-->
 
 		<?php 
-		if (!$_GET['do']) {
+		if (!isset($_GET['do'])) {
 			include "forms_tables/message_view.php";
 		
 		}elseif ($_GET['do']=="view") {

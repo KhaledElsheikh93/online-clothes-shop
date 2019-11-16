@@ -24,7 +24,7 @@
 
  <?php 
      
-     if (!$_GET["do"]) {
+     if (!isset($_GET["do"])) {
      	include "forms_tables/admin_view.php";
      
      }elseif ($_GET["do"]=="add") {

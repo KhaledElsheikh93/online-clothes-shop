@@ -12,11 +12,10 @@
  	move_uploaded_file($img_tmp,"uploads/images");
  
  	$b_date=date("Y-m-d");
- 	$comment=$_POST['comment'];
 
 
- 	$insert_blogs="INSERT INTO blogs (blog_title, content, author, images, b_date, comment)
- 	               VALUES ('$blog_title','$content','$author','$images', '$b_date','$comment')";
+ 	$insert_blogs="INSERT INTO blogs (blog_title, content, author, images, b_date)
+ 	               VALUES ('$blog_title','$content','$author','$images', '$b_date')";
 
  	$conn->query($insert_blogs);
 

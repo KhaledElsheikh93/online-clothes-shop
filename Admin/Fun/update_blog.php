@@ -7,7 +7,6 @@ if (isset($_POST['submit'])) {
 	$blog    =$_POST['blog_title'];
 	$content =$_POST['content'];
 	$author  =$_POST['author'];
-	$comment =$_POST['comment'];
 	
 	$images  =$_FILES['images']['name'];
 	$img_tmp =$_FILES['images']['tmp_name'];
@@ -16,8 +15,7 @@ if (isset($_POST['submit'])) {
 		$update_img="UPDATE blogs SET images='$images' WHERE id='$id'";
 		$conn->query($update_img);	
 	}
-	$update_blogs="UPDATE blogs SET blog_title='$blog' ,content='$content' ,author='$author' ,
-	comment='$comment' WHERE id=$id";
+	$update_blogs="UPDATE blogs SET blog_title='$blog' ,content='$content' ,author='$author' WHERE id=$id";
 	$conn->query($update_blogs);
 	header("Location:../blogs.php");
 }
